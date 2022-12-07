@@ -6,6 +6,7 @@ import streamlit as st
 from PIL import Image
 import os
 import pickle
+import cv2
 from streamlit_image_comparison import image_comparison
 
 
