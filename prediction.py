@@ -239,19 +239,23 @@ def main():
                     img2=new_img,
                 )
                 st.balloons()                
+
                 
-            
-            # mask_copy = Mask_Prediction.copy()
-            # mask_copy[mask_copy>0.8*255]=1
-            # mask_copy[mask_copy<=0.8*255]=0
-            Mask_calc = np.where((Mask_Prediction/255)>.5,1.0,0.0)
-            total_area = round(((int(arr_im.shape[0])*int(arr_im.shape[1]))*2.33*2.33),2)
-            # st.text(Mask_calc.shape)
-            solar_area = round((np.sum(Mask_calc[:,:,0])*2.33*2.33),2)
-            # st.text("Total Area= "+str(total_area)+"m2")
-            # st.text("Solar Roof Area= "+str(solar_area)+"m2") 
-            percentage = round((solar_area/total_area*100),2)
-            st.text("Solar Roof Percentage= "+str(percentage)+"%")
+                
+                
+            if st.button('Calculate Solar Roof Percentage'):
+
+                # mask_copy = Mask_Prediction.copy()
+                # mask_copy[mask_copy>0.8*255]=1
+                # mask_copy[mask_copy<=0.8*255]=0
+                Mask_calc = np.where((Mask_Prediction/255)>.5,1.0,0.0)
+                total_area = round(((int(arr_im.shape[0])*int(arr_im.shape[1]))*2.33*2.33),2)
+                # st.text(Mask_calc.shape)
+                solar_area = round((np.sum(Mask_calc[:,:,0])*2.33*2.33),2)
+                # st.text("Total Area= "+str(total_area)+"m2")
+                # st.text("Solar Roof Area= "+str(solar_area)+"m2") 
+                percentage = round((solar_area/total_area*100),2)
+                st.text("Solar Roof Percentage= "+str(percentage)+"%")
             
 
       
@@ -271,13 +275,7 @@ def main():
 
             pil_decoded = Image.fromarray(Mask_Prediction[:,:,0])
 
-            Mask_calc = np.where((Mask_Prediction/255)>.5,1.0,0.0)
-            total_area = round(((int(arr_im.shape[0])*int(arr_im.shape[1]))*0.09),2)
-            solar_area = round((np.sum(Mask_calc[:,:,0])*.09),2)
-            # st.text("Total Area= "+str(total_area)+"m2")
-            # st.text("Solar Roof Area= "+str(solar_area)+"m2") 
-            percentage = round((solar_area/total_area*100),2)
-            st.text("Solar Roof Percentage= "+str(percentage)+"%") 
+
             
             if st.button('Predict my Mask image (side by side)'):
                 scol1,scol2 = st.columns(2)
@@ -301,6 +299,19 @@ def main():
                 )             
                 
 
+                
+                
+          
+        
+            if st.button('Calculate Solar Roof Percentage'):
+                Mask_calc = np.where((Mask_Prediction/255)>.5,1.0,0.0)
+                total_area = round(((int(arr_im.shape[0])*int(arr_im.shape[1]))*0.09),2)
+                solar_area = round((np.sum(Mask_calc[:,:,0])*.09),2)
+                # st.text("Total Area= "+str(total_area)+"m2")
+                # st.text("Solar Roof Area= "+str(solar_area)+"m2") 
+                percentage = round((solar_area/total_area*100),2)
+                st.text("Solar Roof Percentage= "+str(percentage)+"%")    
+            
 
 if __name__ == '__main__':
     main()
