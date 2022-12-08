@@ -112,7 +112,7 @@ def main():
     
 
     st.sidebar.title('Navigation')
-    selection = st.sidebar.radio("Go to", ["Home","Prediction", "Load Images"])
+    selection = st.sidebar.radio("Go to", ["Home","Geo-Log Prediction", "Image Prediction"])
     
 
     
@@ -132,11 +132,11 @@ def main():
         hcol1.image(true)
         hcol2.image(mask)
 
-    elif selection == "Prediction":
+    elif selection == "Geo-Log Prediction":
         
-        lat = st.text_input('Please enter latitude cordinate')
+        lat = st.text_input('Please enter latitude cordinate', value="48.8450903")
                             
-        long = st.text_input('Please enter longitude cordinate')
+        long = st.text_input('Please enter longitude cordinate', value="2.294")
         
         
         #
@@ -259,7 +259,7 @@ def main():
             
 
       
-    elif selection == 'Load Images':
+    elif selection == 'Image Prediction':
         
         file_name = st.file_uploader('Please load your aerial image here', type=["tif", "png", "jpg"])
 
