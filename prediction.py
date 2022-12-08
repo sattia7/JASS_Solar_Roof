@@ -112,7 +112,7 @@ def main():
     
 
     st.sidebar.title('Navigation')
-    selection = st.sidebar.radio("Go to", ["Home","Geo-Log Prediction", "Image Prediction"])
+    selection = st.sidebar.radio("Go to", ["Home","Geo-Loc Prediction", "Image Prediction"])
     
 
     
@@ -132,7 +132,7 @@ def main():
         hcol1.image(true)
         hcol2.image(mask)
 
-    elif selection == "Geo-Log Prediction":
+    elif selection == "Geo-Loc Prediction":
         
         lat = st.text_input('Please enter latitude cordinate', value="48.8450903")
                             
